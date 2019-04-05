@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #0F3385;
+  color: #FFF;
+}
+
+header {
+  height: 500px;
+}
+.headName {
+  display: inline-block;
+}
+.splash {
+  width: 100%;
+  height: 0;
+  position: absolute;
+}
+h1 {
+  font-size: 80px;
+  text-align: right;
+  position: relative;
+  right: 100px;
+  top: 250px;
+}
+#splash1, #splash2, #splash3 {
+  font-size: 45px;
+  display: block;
+  position: relative;
+}
+#splash1 {
+  top: -120px;
+  right: 600px;
+  opacity: 0;
+}
+.fadeIn {
+  opacity: 1;
+  transition: 1.5s opacity;
+}
+#splash2 {
+  top: -14px;
+  right: 350px;
+}
+#splash3 {
+  top: -300px;
+  right: 400px;
+}
