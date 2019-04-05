@@ -9,6 +9,8 @@
 
     <script defer src="js/main.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Playfair+Display:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
@@ -18,10 +20,10 @@
           <a href="#">Michael Petty</a>
         </div>
         <div class="linkBox">
-          <a href="#">Projects</a>
-          <a href="#">About</a>
-          <a href="#">Testimony</a>
-          <a href="#">Contact</a>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#testimony">Testimony</a>
+          <a href="#contact">Contact</a>
         </div>
       </nav>
       <div class="splash">
@@ -32,19 +34,33 @@
       </div>
     </header>
     <main>
-      <section>
+      <section class="projects" id="projects">
         <h2>Projects</h2>
       </section>
-      <section>
-        <h2>About</h2>
+      <section class="about" id="about">
+        <div class="bigHead">
+          <h2>Who am I</h2><br/>
+          anyway?
+        </div>
+        <div class="aboutContent">
+          An unintelligent enemy is far less dangerous than an intelligent one…. I was being chased by a giant dinosaur, but I think I've managed to give it the slip. Oh, you've got a dinosaur too! It's times like this I wish I still had my scarf. Physician, heal thyself. Obviously the Time Lords have programmed the TARDIS always to return to Earth. It seems that I am some kind of a galactic yo-yo! No. That is not the question. That is not where we start. Oh, for God's sake! Gallfrey stands! Big scarf, bow tie, big embarrassing.
+        </div>
       </section>
-      <section>
+      <section class="testimony" id="testimony">
         <h2>Testimony</h2>
       </section>
-      <section>
+      <section class="contact" id="contact">
         <h2>Contact</h2>
       </section>
     </main>
-    <footer>&copy; 2019, Michael Petty</footer>
+    <footer>
+      <div class="copy">
+        &copy; 2019, Michael Petty
+      </div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/michaelpetty42/"><i class="fab fa-linkedin"></i></a>
+				<a href="https://github.com/michaelpetty"><i class="fab fa-github"></i></a>
+      </div>
+    </footer>
   </body>
 </html>
