@@ -6,13 +6,30 @@
 body {
   background: #0F3385;
   color: #FFF;
+  font-family: 'Playfair Display', serif;
 }
-
 header {
   height: 500px;
 }
-.headName {
+nav {
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 24px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+nav a {
+  color: #FFF;
+  text-decoration: none;
+}
+.headName, .linkBox {
   display: inline-block;
+}
+.headName{
+  margin-right: 40px;
+}
+.linkBox a{
+  margin: 0 20px;
 }
 .splash {
   width: 100%;
@@ -24,27 +41,28 @@ h1 {
   text-align: right;
   position: relative;
   right: 100px;
-  top: 250px;
+  top: 150px;
 }
-#splash1, #splash2, #splash3 {
+.splash1, .splash2, .splash3 {
   font-size: 45px;
   display: block;
   position: relative;
+  opacity: 0;
+  transition: 1.5s opacity;
 }
-#splash1 {
+.splash1 {
   top: -120px;
   right: 600px;
-  opacity: 0;
+}
+.splash2 {
+  top: -20px;
+  right: 350px;
+}
+.splash3 {
+  top: -320px;
+  right: 400px;
 }
 .fadeIn {
   opacity: 1;
   transition: 1.5s opacity;
-}
-#splash2 {
-  top: -14px;
-  right: 350px;
-}
-#splash3 {
-  top: -300px;
-  right: 400px;
 }
