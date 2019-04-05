@@ -96,6 +96,13 @@ section {
   background-image: url("../i/COGS_clean.png");
   background-size: cover;
 }
+.carousel {
+  width: 500px;
+  height: 400px;
+  margin: 20px auto;
+  border-radius: 5px 5px 0 0;
+  background: var(--borderblue);
+}
 .about {
   min-height: 300px;
   padding: 20px;
