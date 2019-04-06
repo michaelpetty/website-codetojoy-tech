@@ -1,9 +1,6 @@
-// document.querySelector('body').addEventListener('click', () => {
-//   document.getElementById('splash1').classList.toggle("fadeIn");
-// })
 
 let wordFadeToggle = (elem) => {
-  elem.classList.toggle("fadeIn");
+  elem.classList.toggle('fadeIn');
 }
 setInterval(wordFadeToggle, 3000, document.getElementById('splash1'));
 setTimeout(setInterval, 3000, wordFadeToggle, 3000, document.getElementById('splash2'));
@@ -11,10 +8,29 @@ setTimeout(setInterval, 5000, wordFadeToggle, 3000, document.getElementById('spl
 
 
 // carousel
-const slides = [1,2,3,4,5,6];
+const slides = document.querySelector('.slides');
+// const rootCSS = window.getComputedStyle(document.documentElement);
+// const moveBy = rootCSS.getPropertyValue('--slideMove');
+// let slidePosition = rootCSS.getPropertyValue('--slideOffset');
+//
+// console.log(`rootCSS: ${rootCSS}
+//   moveBy: ${moveBy}
+//   slidePosition: ${slidePosition}`);
 
-let slideCount = slides.length;
-for (i = 0; i < slideCount; i++) {
-    setTimeout( () => {(console.log(`slide: ${slides[i]}`))}, 2000);
+document.querySelector('.arrowNext').addEventListener('click', () => {
+  const rootCSS = window.getComputedStyle(document.documentElement);
+  const moveBy = rootCSS.getPropertyValue('--slideMove') * 1;
+  let slidePosition = rootCSS.getPropertyValue('--slideOffset') * 1;
 
-}
+  console.log(`rootCSS: ${rootCSS}
+    moveBy: ${moveBy}
+    slidePosition: ${slidePosition}`);
+
+  slidePosition += moveBy;
+  console.log(`calculated new slidePosition: ${slidePosition}`);
+  slides.classList.add('moveSlide');
+  setTimeout(() => {
+    document.documentElement.style.setProperty('--slideOffset', slidePosition);
+    slides.classList.remove('moveSlide');
+  }, 3000);
+})
