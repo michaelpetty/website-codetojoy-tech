@@ -100,22 +100,34 @@ section {
   width: 500px;
   height: 400px;
   margin: 20px auto;
+  border: 3px solid var(--borderBlue);
   border-radius: 5px 5px 0 0;
   background: var(--borderBlue);
+  position: relative;
+  overflow: hidden;
 }
 .viewer {
-  /* border-left: 100px solid var(--borderBlue);
+  width: 500px;
+  height: 400px;
+  border-left: 100px solid #eeeeee60;
   border-right: 100px solid #eeeeee60;
   border-radius: 5px 5px 0 0;
-  z-index: 2; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 .slides {
-  animation: 4s linear 0s 1 reverse move_eye;
+  /* position: relative;
+  top: -400px; */
+  display: inline-flex;
+  animation: 12s linear 0s infinite reverse move_slide;
 }
-.slides img {
+/* .slides img {
   display:inline-block;
-}
-@keyframes move_eye { from { margin-left: -20%; } to { margin-left: 100%; }  }
+} */
+@keyframes move_slide { from { margin-left: -200%; } to { margin-left: 130%; }  }
 .about {
   min-height: 300px;
   padding: 20px;
