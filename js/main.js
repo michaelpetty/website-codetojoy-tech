@@ -8,29 +8,37 @@ setTimeout(setInterval, 5000, wordFadeToggle, 3000, document.getElementById('spl
 
 
 // carousel
-const slides = document.querySelector('.slides');
-// const rootCSS = window.getComputedStyle(document.documentElement);
-// const moveBy = rootCSS.getPropertyValue('--slideMove');
-// let slidePosition = rootCSS.getPropertyValue('--slideOffset');
-//
-// console.log(`rootCSS: ${rootCSS}
-//   moveBy: ${moveBy}
-//   slidePosition: ${slidePosition}`);
+let slideGroup = document.querySelector('.slides');
+let slides = slideGroup.querySelectorAll('img');
+const slidesNum = slides.length;
+
+//show last slide under previous arrow on first slide
+slideGroup.prepend(slides[slidesNum-1]);
 
 document.querySelector('.arrowNext').addEventListener('click', () => {
-  const rootCSS = window.getComputedStyle(document.documentElement);
-  const moveBy = rootCSS.getPropertyValue('--slideMove') * 1;
+  let rootCSS = window.getComputedStyle(document.documentElement);
+  let moveBy = rootCSS.getPropertyValue('--slideMove') * 1;
   let slidePosition = rootCSS.getPropertyValue('--slideOffset') * 1;
 
-  console.log(`rootCSS: ${rootCSS}
-    moveBy: ${moveBy}
-    slidePosition: ${slidePosition}`);
-
-  slidePosition += moveBy;
-  console.log(`calculated new slidePosition: ${slidePosition}`);
-  slides.classList.add('moveSlide');
+  slideGroup = document.querySelector('.slides');
+  slides = slideGroup.querySelectorAll('img');
+  slideGroup.classList.add('nextSlide');
   setTimeout(() => {
-    document.documentElement.style.setProperty('--slideOffset', slidePosition);
-    slides.classList.remove('moveSlide');
+    slideGroup.append(slides[0]);
+    slideGroup.classList.remove('nextSlide');
+  }, 3000);
+})
+
+document.querySelector('.arrowPrev').addEventListener('click', () => {
+  let rootCSS = window.getComputedStyle(document.documentElement);
+  let moveBy = rootCSS.getPropertyValue('--slideMove') * 1;
+  let slidePosition = rootCSS.getPropertyValue('--slideOffset') * 1;
+
+  slideGroup = document.querySelector('.slides');
+  slides = slideGroup.querySelectorAll('img');
+  slideGroup.classList.add('prevSlide');
+  setTimeout(() => {
+    slideGroup.prepend(slides[slidesNum-1]);
+    slideGroup.classList.remove('prevSlide');
   }, 3000);
 })

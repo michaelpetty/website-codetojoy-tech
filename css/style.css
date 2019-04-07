@@ -152,10 +152,14 @@ section {
 .slides img {
   margin: 0 10px;
 }
-.moveSlide {
-  animation: 3s linear 0s 1 normal move_slide;
+.nextSlide {
+  animation: 3s linear 0s 1 normal next_slide;
 }
-@keyframes move_slide { from { margin-left: 0px; } to { margin-left: calc(var(--slideMove) * 1px); }  }
+.prevSlide {
+  animation: 3s linear 0s 1 reverse prev_slide;
+}
+@keyframes next_slide { from { margin-left: 0px; } to { margin-left: calc(var(--slideMove) * 1px); }  }
+@keyframes prev_slide { from { margin-left: calc(var(--slideMove) * -1px); } to { margin-left: 0px; }  }
 .about {
   min-height: 300px;
   padding: 20px;
