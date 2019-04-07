@@ -26,7 +26,7 @@ document.querySelector('.arrowNext').addEventListener('click', () => {
   setTimeout(() => {
     slideGroup.append(slides[0]);
     slideGroup.classList.remove('nextSlide');
-  }, 3000);
+  }, 2000);
 })
 
 document.querySelector('.arrowPrev').addEventListener('click', () => {
@@ -37,8 +37,19 @@ document.querySelector('.arrowPrev').addEventListener('click', () => {
   slideGroup = document.querySelector('.slides');
   slides = slideGroup.querySelectorAll('img');
   slideGroup.classList.add('prevSlide');
+  slideGroup.prepend(slides[slidesNum-1]);
   setTimeout(() => {
-    slideGroup.prepend(slides[slidesNum-1]);
     slideGroup.classList.remove('prevSlide');
-  }, 3000);
+  }, 2000);
+})
+
+document.getElementById('about').addEventListener('mouseenter', () => {
+  let aboutHead = document.querySelector('.bigHead');
+  let aboutHTML = aboutHead.innerHTML;
+  let tempHTML = document.querySelector('.resume-Am-I').innerHTML;
+
+  aboutHead.innerHTML = tempHTML;
+  setTimeout(() => {
+    aboutHead.innerHTML = aboutHTML;
+  }, 5000);
 })
