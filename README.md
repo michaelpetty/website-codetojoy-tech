@@ -40,10 +40,18 @@ Portfolio project highlighting HTML, CSS and JavaScript
 
 ---
 
-#### Big Win & Big Challenge
+#### Big Wins & Big Challenges
 
-- building the carousel by hand
+- **W** building the carousel by hand
+- **C** building the carousel by hand
+- **C** wireframe
+- **C** time management
 
 ---
 
-#### Screenshots
+#### Snippets
+![](readme-assets/Homepage.png)
+
+![](readme-assets/fadeToggle.png)
+
+![](readme-assets/nextArrow.png)
