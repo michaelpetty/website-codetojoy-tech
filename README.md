@@ -46,6 +46,7 @@ Portfolio project highlighting HTML, CSS and JavaScript
 - **C** building the carousel by hand
 - **C** wireframe
 - **C** time management
+- **W** using element attribute data- dataset to send slide and slide dot info 
 
 ---
 

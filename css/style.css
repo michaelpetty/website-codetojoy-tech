@@ -49,6 +49,9 @@ a {
   color: #FFF;
   text-decoration: none;
 }
+a:hover {
+  text-decoration: underline;
+}
 h1 {
   font-family: var(--fontHead);
   font-size: 80px;
