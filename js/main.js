@@ -96,6 +96,11 @@ document.querySelector('.dots').addEventListener('click', (e) => {
     dots[dotPos].classList.add('active');
   }
 })
+document.querySelector('.slides').addEventListener('click', (e) => {
+  if (e.target && e.target.nodeName === 'IMG') {
+    console.log(e.target.dataset.slideUrl);
+  }
+})
 
 // about change header
 document.querySelector('.bigHead').addEventListener('mouseenter', () => {

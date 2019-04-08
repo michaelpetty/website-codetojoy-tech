@@ -173,6 +173,9 @@ section {
 .slides img {
   margin: 0 10px;
 }
+.curSlide {
+  z-index: 4;
+}
 .nextSlide {
   animation: 1s ease-out 0s 1 normal next_slide;
 }
