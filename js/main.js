@@ -7,6 +7,26 @@ let elemFadeToggle = (elem, setHidden) => {
     elem.classList.remove('hidden');
   }
 }
+
+// add active label to nav based on position
+let navLinks = document.querySelectorAll(".linkBox a");
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  navLinks.forEach(link => {
+    let section = document.querySelector(link.hash);
+
+    if (section.offsetTop <= fromTop && (section.offsetTop + section.offsetHeight) > fromTop
+    ) {
+      link.classList.add("activeNav");
+    } else {
+      link.classList.remove("activeNav");
+    }
+  })
+})
+
+// splash words
 setInterval(elemFadeToggle, 3000, document.getElementById('splash1'));
 setTimeout(setInterval, 3000, elemFadeToggle, 3000, document.getElementById('splash2'));
 setTimeout(setInterval, 5000, elemFadeToggle, 3000, document.getElementById('splash3'));
@@ -48,6 +68,7 @@ document.querySelector('.arrowPrev').addEventListener('click', () => {
   }, 2000);
 })
 
+// about change header
 document.getElementById('about').addEventListener('mouseenter', () => {
   let aboutHead = document.querySelector('.bigHead');
   let aboutHTML = aboutHead.innerHTML;
@@ -59,7 +80,8 @@ document.getElementById('about').addEventListener('mouseenter', () => {
   }, 5000);
 })
 
-document.getElementById('testimony').addEventListener('click', () => {
+//testimony cycling
+const testimonyTimer = () => {
   let quotes = document.querySelectorAll('.quotes blockquote');
   let i = 1;
   console.log(document.getElementById('quote' + i));
@@ -70,7 +92,24 @@ document.getElementById('testimony').addEventListener('click', () => {
       elemFadeToggle(document.getElementById('quote' + ++i), true);
     }, 1000);
   }, 7000);
+  document.getElementById('testimony').removeEventListener('mouseenter', testimonyTimer);
+}
 
-  // setInterval(elemFadeToggle, 4000, document.getElementById('quote1'), true);
+document.getElementById('testimony').addEventListener('mouseenter', testimonyTimer);
 
+// form validation
+document.querySelectorAll('.error-message').forEach(el => {
+  el.classList.add('hidden');
 })
+
+//TODO: convert jquery to vanilla js
+// $('form.contact').on('submit', function(e)  {
+//   e.preventDefault();
+//   $('.contact input, .contact textarea').each(function() {
+//     if ($(this).val() === '') {
+//       $(this).addClass('error').siblings('.error-message').fadeIn(700);
+//     } else {
+//       $(this).removeClass('error').siblings('.error-message').fadeOut(700);
+//     }
+//   })
+// })
