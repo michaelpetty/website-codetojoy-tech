@@ -1,10 +1,15 @@
 
-let wordFadeToggle = (elem) => {
-  elem.classList.toggle('fadeIn');
+let elemFadeToggle = (elem, setHidden) => {
+  let fadeIn = elem.classList.toggle('fadeIn')
+  if (!fadeIn && setHidden) {
+    setTimeout(() => {elem.classList.add('hidden')}, 1001);
+  } else {
+    elem.classList.remove('hidden');
+  }
 }
-setInterval(wordFadeToggle, 3000, document.getElementById('splash1'));
-setTimeout(setInterval, 3000, wordFadeToggle, 3000, document.getElementById('splash2'));
-setTimeout(setInterval, 5000, wordFadeToggle, 3000, document.getElementById('splash3'));
+setInterval(elemFadeToggle, 3000, document.getElementById('splash1'));
+setTimeout(setInterval, 3000, elemFadeToggle, 3000, document.getElementById('splash2'));
+setTimeout(setInterval, 5000, elemFadeToggle, 3000, document.getElementById('splash3'));
 
 
 // carousel
@@ -52,4 +57,20 @@ document.getElementById('about').addEventListener('mouseenter', () => {
   setTimeout(() => {
     aboutHead.innerHTML = aboutHTML;
   }, 5000);
+})
+
+document.getElementById('testimony').addEventListener('click', () => {
+  let quotes = document.querySelectorAll('.quotes blockquote');
+  let i = 1;
+  console.log(document.getElementById('quote' + i));
+  setInterval(() => {
+    elemFadeToggle(document.getElementById('quote' + i), true);
+    i = (i === quotes.length)? 0: i;
+    setTimeout(() => {
+      elemFadeToggle(document.getElementById('quote' + ++i), true);
+    }, 1000);
+  }, 7000);
+
+  // setInterval(elemFadeToggle, 4000, document.getElementById('quote1'), true);
+
 })
