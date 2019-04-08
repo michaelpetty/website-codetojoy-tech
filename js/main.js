@@ -52,9 +52,11 @@ document.querySelector('.arrowNext').addEventListener('click', () => {
   slideGroup = document.querySelector('.slides');
   slides = slideGroup.querySelectorAll('img');
   slideGroup.classList.add('nextSlide');
+  slides[1].classList.remove('curSlide');
   setTimeout(() => {
     slideGroup.append(slides[0]);
     slideGroup.classList.remove('nextSlide');
+    slides[2].classList.add('curSlide');
   }, 1000);
 })
 
@@ -68,7 +70,9 @@ document.querySelector('.arrowPrev').addEventListener('click', () => {
   slideGroup = document.querySelector('.slides');
   slides = slideGroup.querySelectorAll('img');
   slideGroup.classList.add('prevSlide');
+  slides[1].classList.remove('curSlide');
   slideGroup.prepend(slides[slidesNum-1]);
+  slides[0].classList.add('curSlide');
   setTimeout(() => {
     slideGroup.classList.remove('prevSlide');
   }, 1000);
@@ -76,6 +80,9 @@ document.querySelector('.arrowPrev').addEventListener('click', () => {
 
 document.querySelector('.dots').addEventListener('click', (e) => {
   if (e.target && e.target.matches("span.dot")) {
+    slideGroup = document.querySelector('.slides');
+    slides = slideGroup.querySelectorAll('img');
+    slides[1].classList.remove('curSlide');
     let reqSlide = e.target.dataset.slideId;
     let slideHops = dotPos + 1 - reqSlide;
     if (slideHops > 0) {
@@ -91,6 +98,9 @@ document.querySelector('.dots').addEventListener('click', (e) => {
         slideGroup.append(slides[0]);
       }
     }
+    slideGroup = document.querySelector('.slides');
+    slides = slideGroup.querySelectorAll('img');
+    slides[1].classList.add('curSlide');
     dots[dotPos].classList.remove('active');
     dotPos = reqSlide - 1;
     dots[dotPos].classList.add('active');
@@ -98,10 +108,12 @@ document.querySelector('.dots').addEventListener('click', (e) => {
 })
 document.querySelector('.slides').addEventListener('click', (e) => {
   if (e.target && e.target.nodeName === 'IMG') {
-    console.log(e.target.dataset.slideUrl);
+    document.getElementById('slideGallery').style.cssText = `display:initial; background-image:url(${e.target.dataset.slideUrl})`;
   }
 })
-
+document.getElementById('slideGallery').addEventListener('click', (e) => {
+  document.getElementById('slideGallery').style.cssText = 'display:none;'
+})
 // about change header
 document.querySelector('.bigHead').addEventListener('mouseenter', () => {
   let aboutHead = document.querySelector('.bigHead');
