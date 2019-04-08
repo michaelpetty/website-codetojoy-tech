@@ -20,7 +20,7 @@ body {
 }
 header, footer {
   height: 450px;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   border-bottom: 3px solid var(--borderBlue);
   background-image: url("../i/COGS_clean.png");
   background-size: cover;
@@ -105,16 +105,25 @@ blockquote.fadeIn {
   transition: 3s opacity;
 }
 section {
-  margin: 0 30px 30px;
+  margin: 0 60px 80px;
   border: 3px solid var(--borderBlue);
   border-radius: 5px 5px 0 0;
   background-image: url("../i/COGS_clean.png");
   background-size: cover;
 }
+.projects {
+  width: fit-content;
+  padding: 0 60px;
+  margin: 0 auto 80px;
+}
+.projects h2 {
+  padding-top: 12px;
+  text-align: center;
+}
 .carousel {
   width: 500px;
   height: 400px;
-  margin: 20px auto;
+  margin: 24px auto 12px;
   border: 3px solid var(--borderBlue);
   border-radius: 5px 5px 0 0;
   position: relative;
@@ -165,13 +174,30 @@ section {
   margin: 0 10px;
 }
 .nextSlide {
-  animation: 2s linear 0s 1 normal next_slide;
+  animation: 1s ease-out 0s 1 normal next_slide;
 }
 .prevSlide {
-  animation: 2s linear 0s 1 normal prev_slide;
+  animation: 1s ease-out 0s 1 normal prev_slide;
 }
 @keyframes next_slide { from { margin-left: 0px; } to { margin-left: calc(var(--slideMove) * 1px); }  }
 @keyframes prev_slide { from { margin-left: calc(var(--slideMove) * 1px); } to { margin-left: 0px; }  }
+.dots {
+  margin: 0 auto 8px;
+  text-align: center;
+}
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 4px;
+  background-color: #74A1C7;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.8s;
+}
+.dot.active, .dot:hover {
+  background-color: #FFF;
+}
 .about {
   min-height: 300px;
   padding: 20px;
