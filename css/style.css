@@ -2,6 +2,7 @@
 :root {
   --fontHead: 'Playfair Display', serif;
   --fontContent: 'Didact Gothic', sans-serif;
+  --darkBlue: #012066;
   --borderBlue: #74A1C760;
   --slideOffset: -230;
   --slideMove: -320;
@@ -13,15 +14,17 @@
   scroll-behavior: smooth;
 }
 body {
-  background: #0F3385;
+  background: var(--darkBlue);
   color: #FFF;
   font-family: var(--fontContent);
   font-size: 20px;
 }
 header, footer {
   height: 450px;
-  margin-bottom: 100px;
+  margin: 57px 0 100px;
   border-bottom: 3px solid var(--borderBlue);
+  border-top: 3px solid var(--borderBlue);
+  border-radius: 16px 16px 0 0;
   background-image: url("../i/COGS_clean.png");
   background-size: cover;
 }
@@ -29,8 +32,8 @@ nav {
   font-family: var(--fontContent);
   font-size: 24px;
   padding: 12px;
-  border-bottom: 2px solid var(--borderBlue);
-  background-color: #0F3385;
+  /* border-bottom: 2px solid var(--borderBlue); */
+  background-color: var(--darkBlue);
   position: fixed;
   top: 0;
   left: 0;
@@ -113,7 +116,7 @@ blockquote.fadeIn {
 section {
   margin: 0 60px 80px;
   border: 3px solid var(--borderBlue);
-  border-radius: 5px 5px 0 0;
+  border-radius: 16px 16px 0 0;
   background-image: url("../i/COGS_clean.png");
   background-size: cover;
 }
@@ -308,7 +311,7 @@ footer {
   margin: 0 3px;
   border: 3px solid var(--borderBlue);
   border-bottom: none;
-  border-radius: 5px 5px 0 0;
+  border-radius: 8px 8px 0 0;
   display: flex;
   justify-content: space-around;
 }
