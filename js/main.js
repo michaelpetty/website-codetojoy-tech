@@ -37,6 +37,7 @@ let slideGroup = document.querySelector('.slides');
 let slides = slideGroup.querySelectorAll('img');
 const slidesNum = slides.length;
 let dots = document.querySelectorAll('.dot');
+let captions = document.querySelectorAll('.caption');
 
 //show last slide under previous arrow on first slide
 slideGroup.prepend(slides[slidesNum-1]);
@@ -45,9 +46,11 @@ let dotPos = 0;
 document.querySelector('.arrowNext').addEventListener('click', () => {
   //move dots
   dots[dotPos].classList.remove('active');
+  captions[dotPos].classList.remove('active');
   dotPos++;
   dotPos = (dotPos === slidesNum)? 0: dotPos;
   dots[dotPos].classList.add('active');
+  captions[dotPos].classList.add('active');
 
   slideGroup = document.querySelector('.slides');
   slides = slideGroup.querySelectorAll('img');
@@ -63,9 +66,11 @@ document.querySelector('.arrowNext').addEventListener('click', () => {
 document.querySelector('.arrowPrev').addEventListener('click', () => {
   //move dots
   dots[dotPos].classList.remove('active');
+  captions[dotPos].classList.remove('active');
   dotPos--;
   dotPos = (dotPos < 0)? slidesNum-1: dotPos;
   dots[dotPos].classList.add('active');
+  captions[dotPos].classList.add('active');
 
   slideGroup = document.querySelector('.slides');
   slides = slideGroup.querySelectorAll('img');
@@ -102,12 +107,15 @@ document.querySelector('.dots').addEventListener('click', (e) => {
     slides = slideGroup.querySelectorAll('img');
     slides[1].classList.add('curSlide');
     dots[dotPos].classList.remove('active');
+    captions[dotPos].classList.remove('active');
     dotPos = reqSlide - 1;
     dots[dotPos].classList.add('active');
+    captions[dotPos].classList.add('active');
   }
 })
 document.querySelector('.slides').addEventListener('click', (e) => {
   if (e.target && e.target.nodeName === 'IMG') {
+    console.log('clicked slide');
     document.getElementById('slideGallery').style.cssText = `display:initial; background-image:url(${e.target.dataset.slideUrl})`;
   }
 })
@@ -130,7 +138,6 @@ document.querySelector('.bigHead').addEventListener('mouseenter', () => {
 const testimonyTimer = () => {
   let quotes = document.querySelectorAll('.quotes blockquote');
   let i = 1;
-  console.log(document.getElementById('quote' + i));
   setInterval(() => {
     elemFadeToggle(document.getElementById('quote' + i), true);
     i = (i === quotes.length)? 0: i;
@@ -138,10 +145,11 @@ const testimonyTimer = () => {
       elemFadeToggle(document.getElementById('quote' + ++i), true);
     }, 1000);
   }, 7000);
-  document.getElementById('testimony').removeEventListener('mouseenter', testimonyTimer);
+  //document.getElementById('testimony').removeEventListener('mouseenter', testimonyTimer);
 }
 
-document.getElementById('testimony').addEventListener('mouseenter', testimonyTimer);
+//document.getElementById('testimony').addEventListener('mouseenter', testimonyTimer);
+testimonyTimer();
 
 // form validation
 document.querySelectorAll('.error-message').forEach(el => {
