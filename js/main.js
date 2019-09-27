@@ -115,7 +115,6 @@ document.querySelector('.dots').addEventListener('click', (e) => {
 })
 document.querySelector('.slides').addEventListener('click', (e) => {
   if (e.target && e.target.nodeName === 'IMG') {
-    console.log('clicked slide');
     document.getElementById('slideGallery').style.cssText = `display:initial; background-image:url(${e.target.dataset.slideUrl})`;
   }
 })
@@ -151,19 +150,87 @@ const testimonyTimer = () => {
 //document.getElementById('testimony').addEventListener('mouseenter', testimonyTimer);
 testimonyTimer();
 
-// form validation
+const isValidEmail = str => {
+  const emailRE = new RegExp('^[\\w\\.!+-]+@[\\w-]+\\.\\w[\\w-]+(?:\\.\\w[\\w-]+)*$');
+  return emailRE.test(str);
+}
+
+const hasSpecialChar = str => {
+  const specialCharRE = new RegExp('[<>]+');
+  return specialCharRE.test(str);
+}
+
+// message form handling
+const inputValidation = (inp, opt) => {
+  // opt: fromName, fromEmail, message, subject
+  let response = {
+    isValid: false,
+    message: ''
+  }
+  if (inp.length === 0) {
+    response.message = 'Required field';
+  }  else if (hasSpecialChar(inp)) {
+    response.message = 'No special characters';
+  } else if (opt === 'message' && inp.length < 20 ) {
+    response.message = 'Message too short';
+  } else if (opt === 'fromName' && inp.length < 2 ) {
+    response.message = 'Enter full name';
+  } else if (opt === 'subject' && inp.length < 2 ) {
+    response.message = 'Enter a subject';
+  } else if (opt === 'fromEmail' && !isValidEmail(inp)) {
+    response.message = 'Invalid email';
+  } else {
+    response.isValid = true;
+  }
+
+  return response;
+}
+
 document.querySelectorAll('.error-message').forEach(el => {
   el.classList.add('hidden');
 })
 
-//TODO: convert jquery to vanilla js
-// $('form.contact').on('submit', function(e)  {
-//   e.preventDefault();
-//   $('.contact input, .contact textarea').each(function() {
-//     if ($(this).val() === '') {
-//       $(this).addClass('error').siblings('.error-message').fadeIn(700);
-//     } else {
-//       $(this).removeClass('error').siblings('.error-message').fadeOut(700);
-//     }
-//   })
-// })
+document.querySelector('form.contact').addEventListener('submit', (e) => {
+  e.preventDefault();
+  let allFormsValid = true;
+  let urlEncodedQuery = '';
+  // form validation
+  document.querySelectorAll('.contact input, .contact textarea').forEach(el => {
+    let validationResponse = inputValidation(el.value, el.name);
+    if (!validationResponse.isValid) {
+      allFormsValid = false;
+      el.classList.add('error');
+      el.nextElementSibling.classList.remove('hidden');
+      el.nextElementSibling.innerText = validationResponse.message;
+    } else {
+      urlEncodedQuery += `${el.name}=${encodeURIComponent(el.value)}&`
+      el.classList.remove('error');
+      el.nextElementSibling.classList.add('hidden');
+    }
+  })
+  if (allFormsValid) {
+    let httpRequest = new XMLHttpRequest();
+
+    if (!httpRequest) {
+      console.log('Giving up :( Cannot create an XMLHTTP instance');
+      return false;
+    }
+    httpRequest.onreadystatechange = () => {
+      console.log(httpRequest.readyState);
+      let contactBlock = document.getElementById('contact');
+      if (httpRequest.readyState === XMLHttpRequest.DONE) {
+        if (httpRequest.status === 200) {
+          contactBlock.querySelector('.progress').classList.add('hidden');
+          contactBlock.querySelector('h2').innerText = 'Thanks for the message';
+          contactBlock.querySelector('form.contact').innerHTML = '';
+        }
+      } else {
+        contactBlock.querySelector('.progress').classList.remove('hidden');
+      }
+    }
+    httpRequest.open('POST', 'http://localhost:4000/msg/send-email');
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send(urlEncodedQuery);
+  }
+
+})

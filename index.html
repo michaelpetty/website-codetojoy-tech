@@ -107,29 +107,30 @@
           </blockquote>
         </div>
       </section>
-      <section class="contact" id="contact">
+      <section class="contactBlock" id="contact">
     		<div class="wrap">
     		<h2>Get in Touch</h2>
-    			<form class="contact">
+    			<form class="contact" novalidate>
     				<div class="form-group col-third">
-    					<input type="text" placeholder="Full Name*" >
-    					<p class="error-message">Please enter your full name.</p>
+    					<input type="text" placeholder="Full Name*" name="fromName" />
+    					<div class="error-message"></div>
     				</div>
     				<div class="form-group col-third">
-    					<input type="email" placeholder="Email*" >
-    					<p class="error-message">Please enter an email address.</p>
+    					<input type="email" placeholder="Email*" name="fromEmail" />
+    					<div class="error-message"></div>
     				</div>
     				<div class="form-group col-third">
-    					<input type="text" placeholder="Subject*" >
-    					<p class="error-message">Please enter a subject.</p>
+    					<input type="text" placeholder="Subject*" name="subject" />
+    					<div class="error-message"></div>
     				</div>
     				<div class="form-group">
-    					<textarea name="" id="" cols="30" rows="10" placeholder="Message*"></textarea>
-    					<p class="error-message">Please enter a message.</p>
+    					<textarea id="" cols="30" rows="10" placeholder="Message*" name="message"></textarea>
+    					<div class="error-message"></div>
     				</div>
-    				<button type="submit">Submit</button>
+    				<button type="submit">Send Message</button>
     			</form>
     		</div>
+        <div class="progress hidden"></div>
     	</section>
     </main>
     <footer>
