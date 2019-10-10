@@ -229,7 +229,7 @@ document.querySelector('form.contact').addEventListener('submit', (e) => {
         contactBlock.querySelector('.progress').classList.remove('hidden');
       }
     }
-    httpRequest.open('POST', `${curLocation.protocol}//${curLocation.hostname}:4000/msg/send-email'`);
+    httpRequest.open('POST', `${curLocation.protocol}//${curLocation.hostname}:4000/msg/send-email`);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send(urlEncodedQuery);
   }
