@@ -1,5 +1,5 @@
-# ![](http://codetojoy.tech/i/cogs/cog_purp_bk.png) GA-SEI-About-Me
-Portfolio project highlighting HTML, CSS and JavaScript
+# ![](https://codetojoy.tech/i/cogs/cog_purp_bk.png) [CodeToJoy.tech](https://codetojoy.tech)
+Portfolio project highlighting React, ExpressJS API, HTML, CSS and JavaScript
 
 ---
 
